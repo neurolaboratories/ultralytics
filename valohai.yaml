@@ -1,0 +1,12 @@
+- step:
+    name: yolo-train
+    image: neurolabszia.azurecr.io/valohai-zia-vision:phase3-multi-gpu-training-gpu
+    command:
+      - mkdir /valohai/inputs/data/
+      - mkdir /valohai/outputs/models/
+      - python untar_archives.py --input_path /valohai/inputs/data
+      - python train.py
+    
+    inputs:
+      - name: data
+        default: gs://valohai-datasets/syn/3dmodels/fruits-and-friends-revised.tar.gz
